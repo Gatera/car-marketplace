@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router'
 import Home from './home'
 import Contact from './Contact'
 import { ClerkProvider } from '@clerk/clerk-react'
+import Hero from './components/Hero'
 
 const router=createBrowserRouter([
   {
