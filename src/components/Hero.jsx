@@ -9,6 +9,8 @@ function Hero() {
             <h2 className='text-[60px] font-bold'>Find Your Dream Car</h2>
 
             <Search />
+
+            <img src="/Tesla.png" alt="Tesla Model Y" />
         </div>
     </div>
   )
