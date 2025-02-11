@@ -2,6 +2,7 @@ import Header from '@/components/Header'
 import React from 'react'
 import carDetails from './../shared/carDetails.json'
 import InputField from './components/InputField'
+import DropdownField from './components/DropdownField'
 
 function AddListing() {
   return (
@@ -17,7 +18,9 @@ function AddListing() {
                       {carDetails.carDetails.map((item, index) => (
                         <div key={index} className='mb-4'>
                           <label className='text-sm'>{item?.label}{item.required && <span className='text-red-500'>*</span>}</label>
-                          {item.fieldType == 'text'||item.fieldType == 'number' ? <InputField item={item} />:null}
+                          {item.fieldType == 'text'||item.fieldType == 'number' ? <InputField item={item} />
+                          :item.fieldType == 'dropdown'?<DropdownField item={item} />
+                          :null}
                         </div>
                       ))}
                     </div>
