@@ -3,6 +3,7 @@ import React from 'react'
 import carDetails from './../shared/carDetails.json'
 import InputField from './components/InputField'
 import DropdownField from './components/DropdownField'
+import TextField from './components/TextField'
 
 function AddListing() {
   return (
@@ -19,7 +20,8 @@ function AddListing() {
                         <div key={index} className='mb-4'>
                           <label className='text-sm'>{item?.label}{item.required && <span className='text-red-500'>*</span>}</label>
                           {item.fieldType == 'text'||item.fieldType == 'number' ? <InputField item={item} />
-                          :item.fieldType == 'dropdown'?<DropdownField item={item} />
+                          :item.fieldType == 'dropdown' ? <DropdownField item={item} />
+                          :item.fieldType == 'textarea' ? <TextField item={item}/>
                           :null}
                         </div>
                       ))}
