@@ -4,6 +4,10 @@ import carDetails from './../shared/carDetails.json'
 import InputField from './components/InputField'
 import DropdownField from './components/DropdownField'
 import TextField from './components/TextField'
+import { Separator } from '@/components/ui/separator'
+import features from './../shared/features.json'
+import { Checkbox } from '@/components/ui/checkbox'
+import { Button } from '@/components/ui/button'
 
 function AddListing() {
   return (
@@ -26,6 +30,24 @@ function AddListing() {
                         </div>
                       ))}
                     </div>
+                </div>
+
+                {/* Features List */}
+                <Separator className="my-6"/>
+                <div>
+                  <h2 className='font-medium text-xl my-6'>Features</h2>
+                  <div className='grid grid-cols-2 md:grid-cols-3 gap-2'>
+                    {features.features.map((item, index) => (
+                      <div key={index} className='flex gap-2 items-center'>
+                        <Checkbox />
+                        <label>{item.label}</label>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className='mt-10 flex justify-end'>
+                  <Button className="">Submit</Button>
                 </div>
             </form>
         </div>
