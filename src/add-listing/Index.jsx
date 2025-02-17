@@ -22,6 +22,12 @@ function AddListing() {
     console.log(formData);
   }
 
+  const onSubmit=(e)=>{
+    e.preventDefault()
+    console.log(formData);
+    
+  }
+
   return (
     <div>
         <Header />
@@ -59,7 +65,7 @@ function AddListing() {
                 </div>
 
                 <div className='mt-10 flex justify-end'>
-                  <Button className="">Submit</Button>
+                  <Button type="submit" onClick={(e) => onSubmit(e)}>Submit</Button>
                 </div>
             </form>
         </div>
