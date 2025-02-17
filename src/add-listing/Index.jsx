@@ -1,5 +1,5 @@
 import Header from '@/components/Header'
-import React from 'react'
+import React, { useState } from 'react'
 import carDetails from './../shared/carDetails.json'
 import InputField from './components/InputField'
 import DropdownField from './components/DropdownField'
@@ -10,6 +10,18 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { Button } from '@/components/ui/button'
 
 function AddListing() {
+
+  const [formData, setFormData] = useState([])
+
+  const handleInputChange = (name, value) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value
+    }))
+
+    console.log(formData);
+  }
+
   return (
     <div>
         <Header />
@@ -23,9 +35,9 @@ function AddListing() {
                       {carDetails.carDetails.map((item, index) => (
                         <div key={index} className='mb-4'>
                           <label className='text-sm'>{item?.label}{item.required && <span className='text-red-500'>*</span>}</label>
-                          {item.fieldType == 'text'||item.fieldType == 'number' ? <InputField item={item} />
-                          :item.fieldType == 'dropdown' ? <DropdownField item={item} />
-                          :item.fieldType == 'textarea' ? <TextField item={item}/>
+                          {item.fieldType == 'text'||item.fieldType == 'number' ? <InputField item={item} handleInputChange={handleInputChange} />
+                          :item.fieldType == 'dropdown' ? <DropdownField item={item} handleInputChange={handleInputChange} />
+                          :item.fieldType == 'textarea' ? <TextField item={item} handleInputChange={handleInputChange}/>
                           :null}
                         </div>
                       ))}
@@ -39,7 +51,7 @@ function AddListing() {
                   <div className='grid grid-cols-2 md:grid-cols-3 gap-2'>
                     {features.features.map((item, index) => (
                       <div key={index} className='flex gap-2 items-center'>
-                        <Checkbox />
+                        <Checkbox onCheckedChange={(value) => handleInputChange(item.name, value)}/>
                         <label>{item.label}</label>
                       </div>
                     ))}
