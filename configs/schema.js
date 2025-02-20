@@ -1,5 +1,4 @@
-import { serial, varchar } from "drizzle-orm/mysql-core";
-import { pgTable } from "drizzle-orm/pg-core";
+import { pgTable, varchar, serial } from "drizzle-orm/pg-core";
 
 export const CarListing = pgTable('carListing', {
     id: serial('id').primaryKey(),
